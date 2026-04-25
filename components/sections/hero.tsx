@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
@@ -14,12 +13,14 @@ import { ArrowDown, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { HeroBiscuit } from "@/components/sections/hero-biscuit";
+import { useIntroDone } from "@/lib/use-intro-done";
 
 const heroHeadline = ["Homemade", "khatai,", "baked", "fresh", "in", "Lahore."];
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
 const wordVariants = {
@@ -33,14 +34,12 @@ const wordVariants = {
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const ready = useIntroDone();
   const ref = React.useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-
-  const rawBgY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const bgY = useSpring(rawBgY, { damping: 30, stiffness: 120, mass: 0.3 });
 
   const rawCopyY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const copyY = useSpring(rawCopyY, { damping: 30, stiffness: 120, mass: 0.3 });
@@ -52,96 +51,103 @@ export function Hero() {
       ref={ref}
       className="relative isolate overflow-hidden pt-32 pb-24 md:pt-40 md:pb-36"
     >
-      <motion.div
-        aria-hidden
-        style={reduceMotion ? undefined : { y: bgY, willChange: "transform" }}
-        className="absolute inset-x-0 -top-16 -bottom-16 -z-10"
-      >
-        <Image
-          src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&w=2000&q=80"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/75 to-cream" />
-        <div className="absolute inset-0 bg-mesh-warm opacity-70 mix-blend-soft-light" />
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-mesh-warm opacity-90" />
         <div className="absolute inset-0 bg-grain opacity-[0.35]" />
-      </motion.div>
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cream"
+        />
+      </div>
 
       <Container className="relative">
-        <motion.div
-          style={reduceMotion ? undefined : { y: copyY, opacity, willChange: "transform" }}
-          className="flex flex-col items-start gap-10"
-        >
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            style={
+              reduceMotion ? undefined : { y: copyY, opacity, willChange: "transform" }
+            }
+            className="flex flex-col items-start gap-10"
           >
-            <Badge variant="gold">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Homemade · Hygienic kitchen · Lahore</span>
-            </Badge>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Badge variant="gold">
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>Homemade · Hygienic kitchen · Lahore</span>
+              </Badge>
+            </motion.div>
 
-          <motion.h1
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="font-serif text-[clamp(3rem,8vw,7.5rem)] leading-[0.95] tracking-tight text-ink text-balance"
-          >
-            {heroHeadline.map((word, idx) => (
-              <span
-                key={`${word}-${idx}`}
-                className="mr-[0.25em] inline-block overflow-hidden align-bottom"
-              >
-                <motion.span variants={wordVariants} className="inline-block">
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-          </motion.h1>
+            <motion.h1
+              variants={containerVariants}
+              initial="hidden"
+              animate={ready ? "show" : "hidden"}
+              className="font-serif text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-ink text-balance"
+            >
+              {heroHeadline.map((word, idx) => (
+                <span
+                  key={`${word}-${idx}`}
+                  className="mr-[0.25em] inline-block overflow-hidden align-bottom"
+                >
+                  <motion.span variants={wordVariants} className="inline-block">
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="max-w-xl text-lg text-ink/70 md:text-xl text-pretty"
-          >
-            Small-batch khatai made by hand in a spotless kitchen — pure desi ghee, fresh
-            cardamom, honest ingredients. Baked this morning and delivered across Lahore
-            the same day.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{ duration: 0.8, delay: ready ? 0.7 : 0 }}
+              className="max-w-xl text-lg text-ink/70 md:text-xl text-pretty"
+            >
+              Small-batch khatai made by hand in a spotless kitchen — pure desi ghee,
+              fresh cardamom, honest ingredients. Baked this morning and delivered
+              across Lahore the same day.
+            </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.05 }}
-            className="flex flex-wrap items-center gap-4"
-          >
-            <Button asChild variant="primary" size="lg">
-              <Link href="#collection">Order khatai</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="#promise">How we bake</Link>
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{ duration: 0.8, delay: ready ? 0.9 : 0 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <Button asChild variant="primary" size="lg">
+                <Link href="#collection">Order khatai</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="#promise">How we bake</Link>
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={ready ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 1, delay: ready ? 1.1 : 0 }}
+              className="flex flex-wrap items-center gap-8 pt-8 text-sm text-ink/60"
+            >
+              <Stat value="100%" label="Homemade" />
+              <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
+              <Stat value="Daily" label="Fresh batches" />
+              <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
+              <Stat value="Same-day" label="Lahore delivery" />
+            </motion.div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.4 }}
-            className="flex flex-wrap items-center gap-8 pt-8 text-sm text-ink/60"
+            animate={ready ? { opacity: 1 } : { opacity: 0 }}
+            // Pure opacity fade, NO scale. Pushed to 1.0 s so the headline
+            // and CTAs come in first — the biscuit photo is the last element
+            // to settle, never the first thing you see after the curtains open.
+            transition={{ duration: 1.4, delay: ready ? 1.0 : 0, ease: "linear" }}
+            className="relative flex justify-center lg:justify-end"
           >
-            <Stat value="100%" label="Homemade" />
-            <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
-            <Stat value="Daily" label="Fresh batches" />
-            <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
-            <Stat value="Same-day" label="Lahore delivery" />
+            <HeroBiscuit />
           </motion.div>
-        </motion.div>
+        </div>
       </Container>
 
       {!reduceMotion && (
@@ -149,8 +155,8 @@ export function Hero() {
           href="#promise"
           aria-label="Scroll to our promise"
           initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: -4 }}
+          transition={{ duration: 0.8, delay: ready ? 1.4 : 0 }}
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-ink/60 md:flex"
         >
           <span>Scroll</span>

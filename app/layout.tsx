@@ -20,7 +20,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={cn(fontSans.variable, fontSerif.variable)}>
-      <body className="min-h-screen bg-cream text-ink antialiased">
+      <body
+        className="min-h-screen bg-cream text-ink antialiased"
+        // Browser extensions (ColorZilla / cz-shortcut-listen, Grammarly, etc.)
+        // mutate the <body> tag before React hydrates, causing a benign
+        // hydration mismatch warning. Suppressing it on body only.
+        suppressHydrationWarning
+      >
         <JsonLd data={organizationSchema()} id="ld-organization" />
         <JsonLd data={localBusinessSchema()} id="ld-local-business" />
         {children}

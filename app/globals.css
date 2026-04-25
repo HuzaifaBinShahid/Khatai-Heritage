@@ -48,6 +48,10 @@
     text-rendering: optimizeLegibility;
   }
 
+  body.intro-lock {
+    overflow: hidden;
+  }
+
   ::selection {
     background: var(--color-saffron);
     color: var(--color-ink);

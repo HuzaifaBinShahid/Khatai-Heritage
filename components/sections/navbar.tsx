@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { useIntroDone } from "@/lib/use-intro-done";
 
 const navLinks = [
   { href: "#promise", label: "Our promise" },
@@ -21,12 +22,15 @@ export function Navbar() {
   const [hidden, setHidden] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const introDone = useIntroDone();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
     setHidden(latest > prev && latest > 120);
     setScrolled(latest > 24);
   });
+
+  if (!introDone) return null;
 
   return (
     <motion.header
