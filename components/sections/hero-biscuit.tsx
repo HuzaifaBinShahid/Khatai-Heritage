@@ -4,8 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1400&q=85";
+const HERO_IMAGE = "/images/HeaderImage.png";
 
 export function HeroBiscuit() {
   const reduceMotion = useReducedMotion();
@@ -71,7 +70,7 @@ export function HeroBiscuit() {
       >
         <Image
           src={HERO_IMAGE}
-          alt="A small batch of homemade khatai — cardamom and desi ghee shortbread, baked fresh in Lahore."
+          alt="A small batch of homemade badam wali khatai — desi-ghee shortbread topped with a whole roasted almond, baked fresh in Lahore."
           fill
           sizes="(min-width: 1024px) 540px, 80vw"
           priority

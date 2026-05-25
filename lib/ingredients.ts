@@ -8,25 +8,11 @@ export type Ingredient = {
 
 export const ingredients: Ingredient[] = [
   {
-    id: "cardamom",
-    name: "Green Cardamom",
-    origin: "Malabar Coast",
-    note: "Hand-ground each morning for the brightest aromatic bloom.",
-    icon: "leaf",
-  },
-  {
-    id: "pistachio",
-    name: "Kashmiri Pistachio",
-    origin: "Anantnag Valley",
-    note: "Cold-pressed for colour, chopped coarse for character.",
+    id: "wheat-flour",
+    name: "Stone-Milled Wheat",
+    origin: "Punjab",
+    note: "Slow stone-milled flour for a tender, even crumb.",
     icon: "sparkles",
-  },
-  {
-    id: "saffron",
-    name: "Pampore Saffron",
-    origin: "Kashmir",
-    note: "Steeped overnight in warm ghee — the slow way, the only way.",
-    icon: "flame",
   },
   {
     id: "ghee",
@@ -34,5 +20,19 @@ export const ingredients: Ingredient[] = [
     origin: "Punjab",
     note: "Simmered from cultured cream for a nutty, golden crumb.",
     icon: "droplet",
+  },
+  {
+    id: "almond",
+    name: "Roasted Almond",
+    origin: "Swat Valley",
+    note: "Roasted whole and pressed into the heart of every biscuit.",
+    icon: "flame",
+  },
+  {
+    id: "cardamom",
+    name: "Green Cardamom",
+    origin: "Malabar Coast",
+    note: "Hand-ground each morning for the brightest aromatic bloom.",
+    icon: "leaf",
   },
 ];

@@ -28,11 +28,11 @@ export function Products({ products }: ProductsProps) {
             kicker="The menu"
             title={
               <>
-                Two khatai.
+                Badam wali khatai.
                 <span className="italic text-saffron-deep"> Done right.</span>
               </>
             }
-            lede="Small-batch, baked to order, hand-packed the same morning. Choose the classic or the one folded with fresh roasted almonds."
+            lede="One khatai, made properly. Small-batch, baked to order and hand-packed the same morning — stone-milled wheat, pure desi ghee and a whole roasted almond on every one."
           />
           <div className="flex items-center gap-3 text-sm text-ink/60">
             <span className="h-2 w-2 rounded-full bg-pistachio" />
@@ -45,7 +45,7 @@ export function Products({ products }: ProductsProps) {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={gridVariants}
-          className="mt-16 grid gap-8 sm:grid-cols-2"
+          className="mx-auto mt-16 grid max-w-md gap-8"
         >
           {products.map((product, idx) => (
             <ProductCard key={product.id} product={product} priority={idx < 2} />

@@ -54,8 +54,8 @@ export function Heritage() {
               className="absolute inset-0"
             >
               <Image
-                src="https://images.unsplash.com/photo-1464195244916-405fa0a82545?auto=format&fit=crop&w=1600&q=80"
-                alt="Flour-dusted hands shaping khatai dough on a wooden board"
+                src="/images/HomeMade.png"
+                alt="A basket of freshly baked homemade badam wali khatai, carried straight from the Lahore kitchen"
                 fill
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"

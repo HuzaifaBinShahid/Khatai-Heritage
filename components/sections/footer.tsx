@@ -8,8 +8,8 @@ const footerNav = [
   {
     title: "Menu",
     links: [
-      { label: "Khatai", href: "#khatai" },
       { label: "Badam Wali Khatai", href: "#badam-wali-khatai" },
+      { label: "Order a box", href: "#newsletter" },
     ],
   },
   {

@@ -11,7 +11,7 @@ const occasions = [
   {
     icon: Sparkles,
     title: "Eid & Ramadan",
-    body: "Our Saffron Gold and Royal Pistachio tins are ready-gifted for Eid, wrapped in hand-stamped cotton.",
+    body: "Our badam wali khatai tins are ready-gifted for Eid, wrapped in hand-stamped cotton.",
   },
   {
     icon: Heart,

@@ -18,29 +18,29 @@ const notes: Note[] = [
   {
     id: "aroma",
     title: "Aroma",
-    teaser: "Warm ghee · green cardamom · a whisper of saffron.",
-    body: "Open the tin and the first breath is sweet ghee, followed by the green-citrus lift of fresh cardamom and the hay-honey note of Pampore saffron. This is the opening act.",
+    teaser: "Warm ghee · green cardamom · toasted almond.",
+    body: "Open the tin and the first breath is sweet desi ghee, followed by the green-citrus lift of fresh cardamom and the toasty warmth of roasted almond. This is the opening act.",
     tone: "saffron",
   },
   {
     id: "texture",
     title: "Texture",
     teaser: "Shortbread crumb that yields at a touch.",
-    body: "A true khatai shatters under slight pressure, dissolving before it ever feels dense. Ours is crumb-forward, never powdery — the semolina holds the bite, the ghee does the rest.",
+    body: "A true khatai shatters under slight pressure, dissolving before it ever feels dense. Ours is crumb-forward, never powdery — the stone-milled wheat holds the bite, the ghee does the rest.",
     tone: "pistachio",
   },
   {
     id: "flavor",
     title: "Flavor",
     teaser: "Buttery, floral, never too sweet.",
-    body: "We use raw cane sugar, not refined, which means the sweetness recedes and lets the ghee and spice speak. Pistachio brings green oil; saffron brings honey; cardamom ties it all.",
+    body: "We use raw cane sugar, not refined, which means the sweetness recedes and lets the ghee and spice speak. Roasted almond brings nutty depth; cardamom ties it all together.",
     tone: "rose",
   },
   {
     id: "finish",
     title: "Finish",
     teaser: "Long, warm, unmistakably South Asian.",
-    body: "The finish lingers on the palate like chai spiced too well — toasty, cardamom-tipped, faintly floral. Designed to be eaten slowly, preferably with company.",
+    body: "The finish lingers on the palate — toasty, cardamom-tipped and faintly nutty from the almond. Designed to be eaten slowly, preferably with company.",
     tone: "charcoal",
   },
 ];
@@ -163,11 +163,11 @@ export function FlavorJourney() {
 
             <div className="flex items-center gap-6 text-xs uppercase tracking-[0.25em] text-ink/50">
               <span>Pair with</span>
-              <span className="text-ink/80">Kashmiri chai</span>
+              <span className="text-ink/80">Karak chai</span>
+              <span>·</span>
+              <span className="text-ink/80">Doodh patti</span>
               <span>·</span>
               <span className="text-ink/80">Cold milk</span>
-              <span>·</span>
-              <span className="text-ink/80">Espresso</span>
             </div>
           </div>
         </div>
