@@ -103,7 +103,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: ready ? 0.7 : 0 }}
               className="max-w-xl text-lg text-ink/70 md:text-xl text-pretty"
             >
-              Small-batch khatai made by hand in a spotless kitchen — pure desi ghee,
+              Small-batch khatai made by hand in a spotless kitchen ,
               fresh cardamom, honest ingredients. Baked this morning and delivered
               across Lahore the same day.
             </motion.p>
@@ -140,7 +140,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={ready ? { opacity: 1 } : { opacity: 0 }}
             // Pure opacity fade, NO scale. Pushed to 1.0 s so the headline
-            // and CTAs come in first — the biscuit photo is the last element
+            // and CTAs come in first the biscuit photo is the last element
             // to settle, never the first thing you see after the curtains open.
             transition={{ duration: 1.4, delay: ready ? 1.0 : 0, ease: "linear" }}
             className="relative flex justify-center lg:justify-end"

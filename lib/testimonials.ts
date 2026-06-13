@@ -9,7 +9,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    quote: "Actually homemade — you can taste the difference from the first bite.",
+    quote: "Actually homemade you can taste the difference from the first bite.",
     author: "Ayesha Rahman",
     role: "Food Writer",
     city: "Lahore",
@@ -23,7 +23,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t3",
-    quote: "Cardamom, ghee, restraint. Exactly what khatai is supposed to taste like.",
+    quote: "Cardamom, restraint. Exactly what khatai is supposed to taste like.",
     author: "Fatima Qureshi",
     role: "Chef",
     city: "Lahore",
@@ -37,7 +37,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t5",
-    quote: "Small batches, pure ghee, clean kitchen — finally a brand that means it.",
+    quote: "Small batches, clean kitchen finally a brand that means it.",
     author: "Hassan Ali",
     role: "Pastry Chef",
     city: "Lahore",

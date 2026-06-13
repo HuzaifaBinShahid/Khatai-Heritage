@@ -18,29 +18,29 @@ const notes: Note[] = [
   {
     id: "aroma",
     title: "Aroma",
-    teaser: "Warm ghee · green cardamom · toasted almond.",
-    body: "Open the tin and the first breath is sweet desi ghee, followed by the green-citrus lift of fresh cardamom and the toasty warmth of roasted almond. This is the opening act.",
+    teaser: "green cardamom · toasted almond.",
+    body: "Open the tin and the first breath is sweet , followed by the green-citrus lift of fresh cardamom and the toasty warmth of roasted almond. This is the opening act.",
     tone: "saffron",
   },
   {
     id: "texture",
     title: "Texture",
     teaser: "Shortbread crumb that yields at a touch.",
-    body: "A true khatai shatters under slight pressure, dissolving before it ever feels dense. Ours is crumb-forward, never powdery — the stone-milled wheat holds the bite, the ghee does the rest.",
+    body: "A true khatai shatters under slight pressure, dissolving before it ever feels dense. Ours is crumb-forward, never powdery the stone-milled wheat holds the bite.",
     tone: "pistachio",
   },
   {
     id: "flavor",
     title: "Flavor",
     teaser: "Buttery, floral, never too sweet.",
-    body: "We use raw cane sugar, not refined, which means the sweetness recedes and lets the ghee and spice speak. Roasted almond brings nutty depth; cardamom ties it all together.",
+    body: "We use raw cane sugar, not refined, which means the sweetness recedes and lets the spice speak. Roasted almond brings nutty depth; cardamom ties it all together.",
     tone: "rose",
   },
   {
     id: "finish",
     title: "Finish",
     teaser: "Long, warm, unmistakably South Asian.",
-    body: "The finish lingers on the palate — toasty, cardamom-tipped and faintly nutty from the almond. Designed to be eaten slowly, preferably with company.",
+    body: "The finish lingers on the palate toasty, cardamom-tipped and faintly nutty from the almond. Designed to be eaten slowly, preferably with company.",
     tone: "charcoal",
   },
 ];
@@ -66,7 +66,7 @@ export function FlavorJourney() {
               <span className="italic text-rose"> second</span> bite.
             </>
           }
-          lede="A flavor journey across four movements — from first aroma to long finish. Hover any card to read the note."
+          lede="A flavor journey across four movements from first aroma to long finish. Hover any card to read the note."
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start">

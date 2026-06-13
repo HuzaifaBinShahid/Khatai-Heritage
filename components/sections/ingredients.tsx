@@ -29,16 +29,16 @@ export function Ingredients() {
         <SectionHeading
           kicker="The pantry"
           kickerTone="ink"
-          title={<span className="text-cream">Four ingredients. Nothing else.</span>}
+          title={<span className="text-cream">Three ingredients. Nothing else.</span>}
           lede={
             <span className="text-cream/70">
               No palm oil, no preservatives, no shortcuts. Every tin contains exactly what the
-              name of the biscuit promises — sourced by hand from the places that grow it best.
+              name of the biscuit promises sourced by hand from the places that grow it best.
             </span>
           }
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ingredients.map((ing, idx) => {
             const Icon = iconMap[ing.icon];
             return (

@@ -70,7 +70,7 @@ export function HeroBiscuit() {
       >
         <Image
           src={HERO_IMAGE}
-          alt="A small batch of homemade badam wali khatai — desi-ghee shortbread topped with a whole roasted almond, baked fresh in Lahore."
+          alt="A small batch of homemade badam wali khatai shortbread topped with a whole roasted almond, baked fresh in Lahore."
           fill
           sizes="(min-width: 1024px) 540px, 80vw"
           priority

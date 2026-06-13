@@ -49,7 +49,7 @@ export function Footer() {
             </Link>
             <p className="max-w-sm text-sm text-cream/60 text-pretty">
               Homemade khatai baked fresh every morning in a hygienic kitchen in Lahore.
-              Pure desi ghee, clean ingredients, same-day delivery across the city.
+              clean ingredients, same-day delivery across the city.
             </p>
             <div className="flex items-center gap-3">
               <SocialLink href={siteConfig.social.instagram} label="Instagram">

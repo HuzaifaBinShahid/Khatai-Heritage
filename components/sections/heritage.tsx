@@ -16,11 +16,11 @@ const promises = [
   {
     icon: Sparkles,
     title: "Hygienic kitchen",
-    body: "Spotless workbenches, sanitised trays and gloved hands — a kitchen we are genuinely proud of.",
+    body: "Spotless workbenches, sanitised trays and gloved hands a kitchen we are genuinely proud of.",
   },
   {
     icon: Flame,
-    title: "Pure desi ghee",
+    title: "",
     body: "Never palm oil, never hydrogenated shortening. The real stuff, for the real crumb.",
   },
   {
@@ -80,7 +80,7 @@ export function Heritage() {
                   not factory-made.
                 </>
               }
-              lede="Every tin is baked to order in a small, hygienic kitchen in Lahore. Pure desi ghee, fresh ingredients, and batches small enough that every biscuit gets attention."
+              lede="Every tin is baked to order in a small, hygienic kitchen in Lahore. fresh ingredients, and batches small enough that every biscuit gets attention."
             />
 
             <ul className="grid gap-5 sm:grid-cols-2">

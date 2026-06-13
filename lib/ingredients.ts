@@ -15,13 +15,6 @@ export const ingredients: Ingredient[] = [
     icon: "sparkles",
   },
   {
-    id: "ghee",
-    name: "Desi Ghee",
-    origin: "Punjab",
-    note: "Simmered from cultured cream for a nutty, golden crumb.",
-    icon: "droplet",
-  },
-  {
     id: "almond",
     name: "Roasted Almond",
     origin: "Swat Valley",

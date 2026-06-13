@@ -39,7 +39,7 @@ export function Newsletter() {
                 <span className="italic">new batch.</span>
               </>
             }
-            lede="Seasonal editions, festive tins and small-batch drops land in our letter first. No spam — one warm email a month."
+            lede="Seasonal editions, festive tins and small-batch drops land in our letter first. No spam one warm email a month."
           />
 
           <form
@@ -102,10 +102,6 @@ export function Newsletter() {
               </AnimatePresence>
             </Button>
           </form>
-
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/50">
-            Homemade · Hygienic kitchen · Same-day delivery in Lahore
-          </p>
         </div>
       </Container>
     </section>

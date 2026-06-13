@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "edge";
-export const alt = `${siteConfig.name} — ${siteConfig.tagline}`;
+export const alt = `${siteConfig.name} ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -74,7 +74,7 @@ export default function OpenGraphImage() {
             color: "#3A3A3A",
           }}
         >
-          <span>Cardamom · Almond · Desi ghee · Fresh daily</span>
+          <span>Cardamom · Almond ·  · Fresh daily</span>
           <span
             style={{
               padding: "10px 24px",

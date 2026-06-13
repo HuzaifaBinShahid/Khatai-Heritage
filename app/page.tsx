@@ -25,10 +25,10 @@ export default function Home() {
       <main id="top" className="relative">
         <Hero />
         <Heritage />
-        <Ingredients />
+        {/* <Ingredients /> */}
         <Products products={products} />
-        <FlavorJourney />
-        <Testimonials />
+        {/* <FlavorJourney /> */}
+        {/* <Testimonials /> */}
         <Occasions />
         <Newsletter />
       </main>

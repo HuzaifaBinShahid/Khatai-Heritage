@@ -32,12 +32,12 @@ export function Products({ products }: ProductsProps) {
                 <span className="italic text-saffron-deep"> Done right.</span>
               </>
             }
-            lede="One khatai, made properly. Small-batch, baked to order and hand-packed the same morning — stone-milled wheat, pure desi ghee and a whole roasted almond on every one."
+            lede="One khatai, made properly. Small-batch, baked to order and hand-packed the same morning stone-milled wheat and a whole roasted almond on every one."
           />
-          <div className="flex items-center gap-3 text-sm text-ink/60">
+          {/* <div className="flex items-center gap-3 text-sm text-ink/60">
             <span className="h-2 w-2 rounded-full bg-pistachio" />
             <span>Same-day delivery in Lahore</span>
-          </div>
+          </div> */}
         </div>
 
         <motion.div

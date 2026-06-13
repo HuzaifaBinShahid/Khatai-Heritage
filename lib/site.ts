@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Khatai Heritage",
   tagline: "Homemade khatai, baked fresh in Lahore",
   description:
-    "Homemade khatai baked in a hygienic kitchen in Lahore. Small batches, fresh ingredients, pure desi ghee — delivered the same day across Lahore.",
+    "Homemade khatai baked in a hygienic kitchen in Lahore. Small batches, fresh ingredients delivered the same day across Lahore.",
   url: "https://khataiheritage.com",
   locale: "en_PK",
   ogImage: "/opengraph-image",
@@ -12,7 +12,6 @@ export const siteConfig = {
     "badam wali khatai",
     "nankhatai lahore",
     "pakistani biscuits",
-    "desi ghee cookies",
     "lahore bakery",
     "hygienic khatai",
   ],
