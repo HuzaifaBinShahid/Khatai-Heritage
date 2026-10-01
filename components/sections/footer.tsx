@@ -2,30 +2,35 @@ import Link from "next/link";
 import { Facebook, Instagram, Music2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
-import { siteConfig } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
+import { siteConfig, whatsappUrl } from "@/lib/site";
+
+const socialLinks = [
+  { label: "WhatsApp", icon: WhatsAppIcon, href: whatsappUrl() },
+  { label: "Instagram", icon: Instagram, href: siteConfig.social.instagram },
+  { label: "Facebook", icon: Facebook, href: siteConfig.social.facebook },
+  { label: "TikTok", icon: Music2, href: siteConfig.social.tiktok },
+];
 
 const footerNav = [
   {
     title: "Menu",
     links: [
-      { label: "Badam Wali Khatai", href: "#badam-wali-khatai" },
-      { label: "Order a box", href: "#newsletter" },
+      { label: "Classic Khatai", href: "#classic-khatai" },
+      { label: "Badam Khatai", href: "#badam-khatai" },
     ],
   },
   {
     title: "Brand",
     links: [
       { label: "Our promise", href: "#promise" },
-      { label: "Ingredients", href: "#ingredients" },
       { label: "Gifting", href: "#occasions" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Delivery in Lahore", href: "#" },
-      { label: "Wholesale", href: "#" },
-      { label: "Contact", href: `mailto:${siteConfig.contact.email}` },
+      { label: "Contact us", href: "#contact" },
     ],
   },
 ];
@@ -48,19 +53,26 @@ export function Footer() {
               </span>
             </Link>
             <p className="max-w-sm text-sm text-cream/60 text-pretty">
-              Homemade khatai baked fresh every morning in a hygienic kitchen in Lahore.
-              clean ingredients, same-day delivery across the city.
+              Homemade khatai baked fresh in a hygienic kitchen in Lahore. Clean
+              ingredients, delivered across the city.
             </p>
             <div className="flex items-center gap-3">
-              <SocialLink href={siteConfig.social.instagram} label="Instagram">
-                <Instagram className="h-4 w-4" />
-              </SocialLink>
-              <SocialLink href={siteConfig.social.facebook} label="Facebook">
-                <Facebook className="h-4 w-4" />
-              </SocialLink>
-              <SocialLink href={siteConfig.social.tiktok} label="TikTok">
-                <Music2 className="h-4 w-4" />
-              </SocialLink>
+              {socialLinks.map(({ label, icon: Icon, href }) =>
+                href ? (
+                  <SocialLink key={label} href={href} label={label}>
+                    <Icon className="h-4 w-4" />
+                  </SocialLink>
+                ) : (
+                  // No link yet — the icon still shows, just not clickable.
+                  <span
+                    key={label}
+                    aria-hidden
+                    className="grid h-10 w-10 place-items-center rounded-full border border-cream/15 text-cream/40"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </span>
+                ),
+              )}
             </div>
           </div>
 

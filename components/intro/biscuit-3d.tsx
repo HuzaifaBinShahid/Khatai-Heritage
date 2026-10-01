@@ -2,64 +2,63 @@
 
 import * as React from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {
   Color,
-  MeshStandardMaterial,
+  MeshPhysicalMaterial,
   Plane,
   Vector3,
   type Group,
   type Mesh,
-  type Object3D,
 } from "three";
 
 // Reusable scratch vectors for getWorldPosition in useFrame (no per-frame alloc).
 const _leftWorld = new Vector3();
 const _rightWorld = new Vector3();
 import { BISCUIT, INTRO_TIMING } from "@/lib/three-scene";
+import {
+  createAlmondGeometry,
+  createCrumbGeometry,
+  createKhataiGeometry,
+} from "@/lib/khatai-model";
 
 interface Biscuit3DProps {
   onSplitStart: () => void;
   onComplete: () => void;
 }
 
-const COOKIE_URL = "/models/cookie.glb";
-useGLTF.preload(COOKIE_URL);
-
 const CRUMB_COUNT = 24;
 
-// Walk a Three.js scene tree and replace each mesh's material with a fresh
-// MeshStandardMaterial tinted to khatai colour. Returns refs to all the
-// resulting materials so we can animate opacity / clipping per clone.
-function tintAndCollectMaterials(
-  root: Object3D,
-  colour: string,
-  clippingPlane: Plane | null,
-): MeshStandardMaterial[] {
-  const out: MeshStandardMaterial[] = [];
-  root.traverse((o) => {
-    if ((o as Mesh).isMesh) {
-      const m = o as Mesh;
-      m.castShadow = true;
-      m.receiveShadow = true;
-      const newMat = new MeshStandardMaterial({
-        color: new Color(colour),
-        roughness: BISCUIT.roughness,
-        metalness: BISCUIT.metalness,
-        transparent: true,
-        opacity: 1,
-      });
-      if (clippingPlane) {
-        newMat.clippingPlanes = [clippingPlane];
-        newMat.clipShadows = true;
-      }
-      m.material = newMat;
-      out.push(newMat);
-    }
+/**
+ * One set of materials per copy of the biscuit (whole, left half, right half).
+ * Each copy needs its own materials so the timeline can fade them
+ * independently, and so each half can carry its own clipping plane.
+ */
+function makeMaterials(clippingPlane: Plane | null) {
+  const common = {
+    vertexColors: true,
+    transparent: true,
+    opacity: 1,
+    metalness: BISCUIT.metalness,
+    ...(clippingPlane ? { clippingPlanes: [clippingPlane], clipShadows: true } : {}),
+  };
+  // Egg-washed shortbread: matte crumb with a faint bake sheen over it.
+  const biscuit = new MeshPhysicalMaterial({
+    ...common,
+    color: new Color("#ffffff"),
+    roughness: 0.95,
+    clearcoat: 0.18,
+    clearcoatRoughness: 0.6,
   });
-  return out;
+  const almond = new MeshPhysicalMaterial({
+    ...common,
+    color: new Color("#ffffff"),
+    roughness: 0.52,
+    clearcoat: 0.35,
+    clearcoatRoughness: 0.4,
+  });
+  return { biscuit, almond, all: [biscuit, almond] };
 }
 
 export function Biscuit3D({ onSplitStart, onComplete }: Biscuit3DProps) {
@@ -75,31 +74,28 @@ export function Biscuit3D({ onSplitStart, onComplete }: Biscuit3DProps) {
     gl.localClippingEnabled = true;
   }, [gl]);
 
-  // Load model once, clone three times so each instance has its own materials.
-  const { scene: original } = useGLTF(COOKIE_URL);
-
-  const fullScene = React.useMemo(() => original.clone(true), [original]);
-  const leftScene = React.useMemo(() => original.clone(true), [original]);
-  const rightScene = React.useMemo(() => original.clone(true), [original]);
+  // Geometry is built once and shared by all three copies.
+  const khataiGeo = React.useMemo(() => createKhataiGeometry(), []);
+  const almondGeo = React.useMemo(() => createAlmondGeometry(), []);
+  const crumbGeos = React.useMemo(
+    () =>
+      Array.from({ length: CRUMB_COUNT }, (_, i) =>
+        createCrumbGeometry(0.05 + (i % 5) * 0.015, i * 13),
+      ),
+    [],
+  );
 
   // Clipping planes: each half's clip follows the half, so it always shows
   // exactly half regardless of how far it has flown.
   const leftClip = React.useMemo(() => new Plane(new Vector3(-1, 0, 0), 0), []);
   const rightClip = React.useMemo(() => new Plane(new Vector3(1, 0, 0), 0), []);
 
-  // Tint + collect material refs the GSAP timeline will animate.
-  const fullMats = React.useMemo(
-    () => tintAndCollectMaterials(fullScene, BISCUIT.color, null),
-    [fullScene],
-  );
-  const leftMats = React.useMemo(
-    () => tintAndCollectMaterials(leftScene, BISCUIT.color, leftClip),
-    [leftScene, leftClip],
-  );
-  const rightMats = React.useMemo(
-    () => tintAndCollectMaterials(rightScene, BISCUIT.color, rightClip),
-    [rightScene, rightClip],
-  );
+  const full = React.useMemo(() => makeMaterials(null), []);
+  const left = React.useMemo(() => makeMaterials(leftClip), [leftClip]);
+  const right = React.useMemo(() => makeMaterials(rightClip), [rightClip]);
+  const fullMats = full.all;
+  const leftMats = left.all;
+  const rightMats = right.all;
 
   const crumbsActive = React.useRef(false);
   const crumbVelocities = React.useMemo(
@@ -171,7 +167,7 @@ export function Biscuit3D({ onSplitStart, onComplete }: Biscuit3DProps) {
 
       const tl = gsap.timeline({ onComplete });
 
-      // 1. Roll in (the GLB cookie spins as it crosses the screen)
+      // 1. Roll in (the khatai spins as it crosses the screen)
       tl.to(rootRef.current.position, {
         x: 0,
         duration: INTRO_TIMING.rollIn,
@@ -268,47 +264,47 @@ export function Biscuit3D({ onSplitStart, onComplete }: Biscuit3DProps) {
     { dependencies: [fullMats, leftMats, rightMats, onSplitStart, onComplete] },
   );
 
-  // Auto-fit the model: Kenney models come at varying scales. The cookie.glb
-  // is small, so we scale the whole rig up to roughly match BISCUIT.radius.
-  const modelScale = 4.5;
+  // The biscuit, the almond pressed into it, and the whole thing again for
+  // each flying half. Geometry is shared; only the materials differ.
+  const copy = (mats: ReturnType<typeof makeMaterials>) => (
+    <>
+      <mesh geometry={khataiGeo} material={mats.biscuit} castShadow receiveShadow />
+      <mesh
+        geometry={almondGeo}
+        material={mats.almond}
+        position={[0, 0.38, 0.02]}
+        scale={0.92}
+        rotation={[-0.12, 0.38, 0.06]}
+        castShadow
+        receiveShadow
+      />
+    </>
+  );
 
   return (
     // Outer wrapper: tilt the whole scene forward so we look DOWN at the
-    // cookie's top surface (3/4 perspective).
-    <group rotation={[0.3, 0, 0]}>
+    // biscuit's top surface (3/4 perspective).
+    <group rotation={[0.3, 0, 0]} scale={0.68}>
       <group ref={rootRef}>
         <group ref={wheelRef}>
-          {/* Inner orientation: the Kenney cookie GLB has its flat face along
-              local +Y (Y-up convention). Rotating +90° around X swings that
-              face toward +Z so the camera sees the top of the cookie, and the
-              cookie's axle now lines up with Z so wheelRef.rotation.z rolls it
-              like a real wheel. */}
+          {/* The khatai is modelled Y-up (flat faces along ±Y). Rotating +90°
+              around X turns the domed top toward the camera and lines the
+              biscuit's axle up with Z, so wheelRef.rotation.z rolls it like a
+              wheel. */}
           <group rotation={[Math.PI / 2, 0, 0]}>
-            <group ref={fullRef} scale={modelScale}>
-              <primitive object={fullScene} />
-            </group>
-
-            <group ref={leftRef} scale={modelScale}>
-              <primitive object={leftScene} />
-            </group>
-
-            <group ref={rightRef} scale={modelScale}>
-              <primitive object={rightScene} />
-            </group>
+            <group ref={fullRef}>{copy(full)}</group>
+            <group ref={leftRef}>{copy(left)}</group>
+            <group ref={rightRef}>{copy(right)}</group>
           </group>
         </group>
 
         {/* crumbs */}
         <group ref={crumbsRef}>
-          {Array.from({ length: CRUMB_COUNT }).map((_, i) => {
-            const size = 0.04 + Math.random() * 0.07;
-            return (
-              <mesh key={i} visible={false} castShadow>
-                <boxGeometry args={[size, size * 0.7, size * 0.8]} />
-                <meshStandardMaterial color={BISCUIT.color} roughness={0.95} />
-              </mesh>
-            );
-          })}
+          {crumbGeos.map((geo, i) => (
+            <mesh key={i} geometry={geo} visible={false} castShadow>
+              <meshStandardMaterial color={BISCUIT.color} roughness={0.95} />
+            </mesh>
+          ))}
         </group>
       </group>
     </group>

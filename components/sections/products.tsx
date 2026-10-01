@@ -28,16 +28,12 @@ export function Products({ products }: ProductsProps) {
             kicker="The menu"
             title={
               <>
-                Badam wali khatai.
-                <span className="italic text-saffron-deep"> Done right.</span>
+                Two khatais.
+                <span className="italic text-saffron-deep"> Both done right.</span>
               </>
             }
-            lede="One khatai, made properly. Small-batch, baked to order and hand-packed the same morning stone-milled wheat and a whole roasted almond on every one."
+            lede="Classic or badam, baked to order in small batches and hand-packed the same morning. Order by the half kilo or the full kilo."
           />
-          {/* <div className="flex items-center gap-3 text-sm text-ink/60">
-            <span className="h-2 w-2 rounded-full bg-pistachio" />
-            <span>Same-day delivery in Lahore</span>
-          </div> */}
         </div>
 
         <motion.div
@@ -45,7 +41,7 @@ export function Products({ products }: ProductsProps) {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={gridVariants}
-          className="mx-auto mt-16 grid max-w-md gap-8"
+          className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2"
         >
           {products.map((product, idx) => (
             <ProductCard key={product.id} product={product} priority={idx < 2} />

@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 import { Gift, Heart, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
+import { whatsappUrl } from "@/lib/site";
 
 const occasions = [
   {
@@ -87,7 +87,13 @@ export function Occasions() {
                   className="inline-block rounded-full"
                 >
                   <Button asChild variant="gold" size="lg">
-                    <Link href="#newsletter">Enquire about gifting</Link>
+                    <a
+                      href={whatsappUrl("Hi! I'd like to ask about gifting boxes.")}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Enquire about gifting
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>

@@ -9,13 +9,11 @@ export function organizationSchema() {
     url: siteConfig.url,
     logo: `${siteConfig.url}/brand/logo.svg`,
     description: siteConfig.description,
-    sameAs: [siteConfig.social.instagram, siteConfig.social.facebook, siteConfig.social.tiktok],
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: siteConfig.contact.phone,
+        telephone: `+${siteConfig.contact.whatsapp}`,
         contactType: "customer support",
-        email: siteConfig.contact.email,
         areaServed: { "@type": "City", name: "Lahore" },
         availableLanguage: ["en", "ur"],
       },
@@ -30,8 +28,7 @@ export function localBusinessSchema() {
     name: siteConfig.name,
     image: `${siteConfig.url}${siteConfig.ogImage}`,
     url: siteConfig.url,
-    telephone: siteConfig.contact.phone,
-    email: siteConfig.contact.email,
+    telephone: `+${siteConfig.contact.whatsapp}`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -61,19 +58,23 @@ export function productSchema(product: Product) {
     brand: { "@type": "Brand", name: siteConfig.name },
     sku: product.id,
     category: "Food > Biscuits & Cookies",
-    offers: {
+    offers: product.prices.map((price) => ({
       "@type": "Offer",
-      price: product.priceValue,
+      name: `${product.name} (${price.weight})`,
+      price: price.value,
       priceCurrency: product.currency,
       availability: "https://schema.org/InStock",
       url: `${siteConfig.url}/#${product.slug}`,
       areaServed: { "@type": "City", name: "Lahore" },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: product.rating,
-      reviewCount: product.reviewCount,
-    },
+    })),
+    ...(product.rating &&
+      product.reviewCount && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: product.rating,
+        reviewCount: product.reviewCount,
+      },
+    }),
   };
 }
 

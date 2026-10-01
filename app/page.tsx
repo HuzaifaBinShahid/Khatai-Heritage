@@ -7,9 +7,11 @@ import { FlavorJourney } from "@/components/sections/flavor-journey";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Occasions } from "@/components/sections/occasions";
 import { Newsletter } from "@/components/sections/newsletter";
+import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { IntroOverlay } from "@/components/intro/intro-overlay";
 import { JsonLd } from "@/components/shared/json-ld";
+import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { products } from "@/lib/products";
 import { breadcrumbSchema, productSchema } from "@/lib/structured-data";
 
@@ -31,8 +33,10 @@ export default function Home() {
         {/* <Testimonials /> */}
         <Occasions />
         <Newsletter />
+        <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

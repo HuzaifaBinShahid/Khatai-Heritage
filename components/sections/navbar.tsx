@@ -11,9 +11,7 @@ import { useIntroDone } from "@/lib/use-intro-done";
 
 const navLinks = [
   { href: "#promise", label: "Our promise" },
-  { href: "#ingredients", label: "Ingredients" },
   { href: "#collection", label: "Menu" },
-  { href: "#flavor", label: "Tasting notes" },
   { href: "#occasions", label: "Gifting" },
 ];
 
@@ -82,7 +80,7 @@ export function Navbar() {
             size="sm"
             className="hidden sm:inline-flex"
           >
-            <Link href="#newsletter">Order a box</Link>
+            <Link href="#contact">Contact us</Link>
           </Button>
           <button
             type="button"
@@ -119,8 +117,8 @@ export function Navbar() {
                 ))}
               </ul>
               <Button asChild variant="primary" className="mt-6 w-full">
-                <Link href="#newsletter" onClick={() => setOpen(false)}>
-                  Order a box
+                <Link href="#contact" onClick={() => setOpen(false)}>
+                  Contact us
                 </Link>
               </Button>
             </Container>

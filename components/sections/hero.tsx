@@ -103,9 +103,9 @@ export function Hero() {
               transition={{ duration: 0.8, delay: ready ? 0.7 : 0 }}
               className="max-w-xl text-lg text-ink/70 md:text-xl text-pretty"
             >
-              Small-batch khatai made by hand in a spotless kitchen ,
-              fresh cardamom, honest ingredients. Baked this morning and delivered
-              across Lahore the same day.
+              Small-batch khatai made by hand in a spotless kitchen with fresh
+              cardamom and honest ingredients. Baked fresh and delivered across
+              Lahore.
             </motion.p>
 
             <motion.div
@@ -116,9 +116,6 @@ export function Hero() {
             >
               <Button asChild variant="primary" size="lg">
                 <Link href="#collection">Order khatai</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="#promise">How we bake</Link>
               </Button>
             </motion.div>
 
@@ -132,7 +129,7 @@ export function Hero() {
               <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
               <Stat value="Daily" label="Fresh batches" />
               <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
-              <Stat value="Same-day" label="Lahore delivery" />
+              <Stat value="4.9" label="Customer rating" />
             </motion.div>
           </motion.div>
 
@@ -143,7 +140,7 @@ export function Hero() {
             // and CTAs come in first the biscuit photo is the last element
             // to settle, never the first thing you see after the curtains open.
             transition={{ duration: 1.4, delay: ready ? 1.0 : 0, ease: "linear" }}
-            className="relative flex justify-center lg:justify-end"
+            className="relative hidden lg:flex lg:justify-end"
           >
             <HeroBiscuit />
           </motion.div>

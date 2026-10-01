@@ -19,7 +19,7 @@ export function HeroBiscuit() {
   React.useEffect(() => {
     if (reduceMotion) return;
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(max-width: 767px)").matches) return;
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
 
     let raf = 0;
     const onMove = (e: MouseEvent) => {
@@ -72,7 +72,7 @@ export function HeroBiscuit() {
           src={HERO_IMAGE}
           alt="A small batch of homemade badam wali khatai shortbread topped with a whole roasted almond, baked fresh in Lahore."
           fill
-          sizes="(min-width: 1024px) 540px, 80vw"
+          sizes="540px"
           priority
           className="object-cover"
         />

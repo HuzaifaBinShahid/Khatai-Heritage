@@ -38,7 +38,6 @@ export const defaultMetadata: Metadata = {
     title: `${siteConfig.name} ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@khataiheritage",
   },
   robots: {
     index: true,
