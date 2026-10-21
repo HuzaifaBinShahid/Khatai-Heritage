@@ -7,7 +7,6 @@ import { FlavorJourney } from "@/components/sections/flavor-journey";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Occasions } from "@/components/sections/occasions";
 import { Newsletter } from "@/components/sections/newsletter";
-import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { IntroOverlay } from "@/components/intro/intro-overlay";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -33,7 +32,6 @@ export default function Home() {
         {/* <Testimonials /> */}
         <Occasions />
         <Newsletter />
-        <Contact />
       </main>
       <Footer />
       <WhatsAppButton />

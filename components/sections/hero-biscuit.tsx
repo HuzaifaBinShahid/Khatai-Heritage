@@ -94,7 +94,7 @@ export function HeroBiscuit() {
           reduceMotion ? undefined : { y: [0, -8, 0], rotate: [0, 4, 0] }
         }
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-2 top-8 hidden h-16 w-16 items-center justify-center rounded-full bg-saffron/95 text-center font-serif text-[10px] uppercase leading-tight tracking-[0.18em] text-ink shadow-soft md:flex"
+        className="absolute right-2 top-8 hidden h-16 w-16 items-center justify-center rounded-full bg-saffron/95 text-center font-serif text-[10px] uppercase leading-tight tracking-[0.18em] text-white shadow-soft md:flex"
       >
         Fresh
         <br />

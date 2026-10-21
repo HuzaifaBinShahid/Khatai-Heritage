@@ -38,7 +38,7 @@ const footerNav = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-mesh-warm text-ink/80">
+    <footer className="relative overflow-hidden bg-gold-muted text-ink/80">
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -right-16 h-[34rem] w-[34rem] opacity-[0.09] md:-bottom-32 md:-right-8 md:h-[42rem] md:w-[42rem]"
