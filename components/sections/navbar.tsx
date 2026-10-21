@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -45,19 +46,21 @@ export function Navbar() {
             : "bg-transparent",
         )}
       >
-        <Link href="#top" className="group flex items-center gap-3">
-          <motion.span
-            whileHover={{ scale: 1.05 }}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-ink font-serif text-lg font-semibold text-saffron"
-          >
-            K
+        <Link
+          href="#top"
+          aria-label="Khatai Heritage — back to top"
+          className="group flex items-center"
+        >
+          <motion.span whileHover={{ scale: 1.04 }} className="block">
+            <Image
+              src="/images/khatai-heritage-logo.png"
+              alt="Khatai Heritage"
+              width={4261}
+              height={3253}
+              priority
+              className="h-14 w-auto object-contain"
+            />
           </motion.span>
-          <span className="hidden flex-col leading-tight sm:flex">
-            <span className="font-serif text-lg tracking-tight text-ink">Khatai Heritage</span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-ink/50">
-              Homemade · Lahore
-            </span>
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
