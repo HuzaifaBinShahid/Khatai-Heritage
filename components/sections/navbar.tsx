@@ -55,10 +55,10 @@ export function Navbar() {
             <Image
               src="/images/khatai-heritage-logo.png"
               alt="Khatai Heritage"
-              width={4261}
+              width={4800}
               height={3253}
               priority
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto object-contain sm:h-20"
             />
           </motion.span>
         </Link>
