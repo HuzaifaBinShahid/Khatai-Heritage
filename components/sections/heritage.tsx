@@ -95,7 +95,7 @@ export function Heritage() {
                     transition={{ duration: 0.6, delay: idx * 0.08 }}
                     className="flex gap-4 rounded-2xl border border-ink/10 bg-cream p-5"
                   >
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-saffron">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-saffron/15 text-saffron-deep">
                       <Icon className="h-4 w-4" />
                     </span>
                     <div>

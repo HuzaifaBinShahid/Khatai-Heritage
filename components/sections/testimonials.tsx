@@ -56,7 +56,7 @@ function TestimonialCard({ quote, author, role, city }: CardProps) {
         &ldquo;{quote}&rdquo;
       </blockquote>
       <figcaption className="mt-auto flex items-center gap-3 border-t border-ink/10 pt-4 text-sm">
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-ink font-serif text-saffron">
+        <span className="grid h-10 w-10 place-items-center rounded-full bg-saffron/15 font-serif text-saffron-deep">
           {author.charAt(0)}
         </span>
         <span className="flex flex-col leading-tight">

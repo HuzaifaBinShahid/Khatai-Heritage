@@ -23,15 +23,15 @@ const toneForIcon: Record<Ingredient["icon"], string> = {
 
 export function Ingredients() {
   return (
-    <section id="ingredients" className="relative scroll-mt-24 bg-ink text-cream py-24 md:py-32">
+    <section id="ingredients" className="relative scroll-mt-24 bg-gold-light py-24 md:py-32">
       <div className="absolute inset-0 bg-grain opacity-20" />
       <Container className="relative">
         <SectionHeading
           kicker="The pantry"
           kickerTone="ink"
-          title={<span className="text-cream">Three ingredients. Nothing else.</span>}
+          title={<span className="text-ink">Three ingredients. Nothing else.</span>}
           lede={
-            <span className="text-cream/70">
+            <span className="text-ink/70">
               No palm oil, no preservatives, no shortcuts. Every tin contains exactly what the
               name of the biscuit promises sourced by hand from the places that grow it best.
             </span>
@@ -53,7 +53,7 @@ export function Ingredients() {
                   damping: 22,
                   delay: idx * 0.08,
                 }}
-                className="group relative flex flex-col gap-5 rounded-3xl border border-cream/10 bg-cream/5 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-saffron/40"
+                className="group relative flex flex-col gap-5 rounded-3xl border border-ink/10 bg-cream/65 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-saffron/50 hover:bg-cream"
               >
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: -6 }}
@@ -66,15 +66,15 @@ export function Ingredients() {
                   <Icon className="h-6 w-6" />
                 </motion.div>
                 <div className="flex flex-col gap-2">
-                  <div className="text-xs uppercase tracking-[0.3em] text-cream/50">
+                  <div className="text-xs uppercase tracking-[0.3em] text-ink/50">
                     {ing.origin}
                   </div>
-                  <h3 className="font-serif text-2xl text-cream">{ing.name}</h3>
-                  <p className="text-sm text-cream/65 text-pretty">{ing.note}</p>
+                  <h3 className="font-serif text-2xl text-ink">{ing.name}</h3>
+                  <p className="text-sm text-ink/65 text-pretty">{ing.note}</p>
                 </div>
-                <div className="mt-auto flex items-center justify-between pt-4 text-xs uppercase tracking-[0.25em] text-cream/40">
+                <div className="mt-auto flex items-center justify-between pt-4 text-xs uppercase tracking-[0.25em] text-ink/45">
                   <span>0{idx + 1}</span>
-                  <span className="h-px w-12 bg-cream/20 transition-all duration-500 group-hover:w-20 group-hover:bg-saffron" />
+                  <span className="h-px w-12 bg-ink/15 transition-all duration-500 group-hover:w-20 group-hover:bg-saffron" />
                 </div>
               </motion.article>
             );

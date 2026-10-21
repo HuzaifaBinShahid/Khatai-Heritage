@@ -57,7 +57,7 @@ export function Occasions() {
                     transition={{ duration: 0.6, delay: idx * 0.08 }}
                     className="flex items-start gap-5 rounded-2xl bg-cream/80 p-5 ring-1 ring-inset ring-ink/5 backdrop-blur transition-colors hover:bg-cream"
                   >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ink text-saffron">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-saffron/15 text-saffron-deep">
                       <Icon className="h-5 w-5" />
                     </span>
                     <div className="flex flex-col gap-1">
@@ -78,15 +78,15 @@ export function Occasions() {
                 <motion.div
                   animate={{
                     boxShadow: [
-                      "0 0 0 0 rgba(212,175,55,0.0)",
-                      "0 0 40px 4px rgba(212,175,55,0.35)",
-                      "0 0 0 0 rgba(212,175,55,0.0)",
+                      "0 0 0 0 rgba(197,83,61,0.0)",
+                      "0 0 40px 4px rgba(197,83,61,0.28)",
+                      "0 0 0 0 rgba(197,83,61,0.0)",
                     ],
                   }}
                   transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
                   className="inline-block rounded-full"
                 >
-                  <Button asChild variant="gold" size="lg">
+                  <Button asChild variant="primary" size="lg">
                     <a
                       href={whatsappUrl("Hi! I'd like to ask about gifting boxes.")}
                       target="_blank"

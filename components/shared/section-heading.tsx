@@ -6,7 +6,7 @@ interface SectionHeadingProps {
   lede?: React.ReactNode;
   align?: "left" | "center";
   className?: string;
-  kickerTone?: "ink" | "saffron" | "pistachio" | "rose";
+  kickerTone?: "ink" | "saffron" | "pistachio" | "rose" | "gold";
 }
 
 const kickerTones = {
@@ -14,6 +14,7 @@ const kickerTones = {
   saffron: "text-saffron-deep",
   pistachio: "text-pistachio-deep",
   rose: "text-rose",
+  gold: "text-gold-light",
 };
 
 export function SectionHeading({

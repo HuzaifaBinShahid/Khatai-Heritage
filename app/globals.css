@@ -5,17 +5,20 @@
 @source "../lib/**/*.{ts,tsx}";
 
 @theme {
-  --color-cream: #f5efe7;
-  --color-cream-muted: #ece3d4;
-  --color-saffron: #d4af37;
-  --color-saffron-deep: #b8912a;
+  --color-cream: #fbf4e9;
+  --color-cream-muted: #efe2d1;
+  --color-gold-light: #f4e7bf;
+  --color-gold-muted: #ead6a4;
+  --color-saffron: #c5533d;
+  --color-saffron-deep: #9f3e2d;
   --color-pistachio: #92b884;
   --color-pistachio-deep: #6f9660;
   --color-rose: #8b4348;
   --color-rose-deep: #6b2e33;
-  --color-charcoal: #3a3a3a;
-  --color-charcoal-deep: #1f1f1f;
-  --color-ink: #14110d;
+  --color-charcoal: #463128;
+  --color-charcoal-deep: #2f211b;
+  --color-cocoa: #795342;
+  --color-ink: #251a16;
 
   --font-sans: var(--font-sans-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif-playfair), ui-serif, Georgia, serif;
@@ -27,7 +30,7 @@
   --radius-2xl: 1.5rem;
 
   --shadow-soft: 0 10px 40px -10px rgba(31, 31, 31, 0.15);
-  --shadow-glow: 0 0 60px -10px rgba(212, 175, 55, 0.35);
+  --shadow-glow: 0 0 60px -10px rgba(197, 83, 61, 0.28);
 }
 
 :root {
@@ -72,11 +75,11 @@
 
   .bg-mesh-warm {
     background:
-      radial-gradient(at 20% 20%, rgba(212, 175, 55, 0.35) 0, transparent 50%),
+      radial-gradient(at 20% 20%, rgba(197, 83, 61, 0.28) 0, transparent 50%),
       radial-gradient(at 80% 10%, rgba(146, 184, 132, 0.3) 0, transparent 50%),
       radial-gradient(at 70% 80%, rgba(139, 67, 72, 0.3) 0, transparent 50%),
-      radial-gradient(at 20% 90%, rgba(212, 175, 55, 0.25) 0, transparent 50%),
-      var(--color-cream);
+      radial-gradient(at 20% 90%, rgba(197, 83, 61, 0.2) 0, transparent 50%),
+      var(--color-gold-light);
   }
 
   .text-balance {
