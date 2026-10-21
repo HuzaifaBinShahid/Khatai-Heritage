@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Music2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+} from "@/components/shared/social-icons";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { siteConfig, whatsappUrl } from "@/lib/site";
 
 const socialLinks = [
   { label: "WhatsApp", icon: WhatsAppIcon, href: whatsappUrl() },
-  { label: "Instagram", icon: Instagram, href: siteConfig.social.instagram },
-  { label: "Facebook", icon: Facebook, href: siteConfig.social.facebook },
-  { label: "TikTok", icon: Music2, href: siteConfig.social.tiktok },
+  { label: "Instagram", icon: InstagramIcon, href: siteConfig.social.instagram },
+  { label: "Facebook", icon: FacebookIcon, href: siteConfig.social.facebook },
+  { label: "TikTok", icon: TikTokIcon, href: siteConfig.social.tiktok },
 ];
 
 const footerNav = [
@@ -38,7 +42,7 @@ const footerNav = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gold-muted text-ink/80">
+    <footer className="relative overflow-hidden border-t border-saffron-deep/20 bg-khatai-footer text-ink/80">
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -right-16 h-[34rem] w-[34rem] opacity-[0.09] md:-bottom-32 md:-right-8 md:h-[42rem] md:w-[42rem]"

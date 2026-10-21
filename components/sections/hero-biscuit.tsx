@@ -44,7 +44,39 @@ export function HeroBiscuit() {
   }, [reduceMotion]);
 
   return (
-    <div className="relative aspect-square w-full max-w-[540px]">
+    <div className="relative aspect-square w-full max-w-[580px]">
+      {/* Exact arrow vector copied from the Figma reference and recolored for the brand. */}
+      <motion.div
+        aria-hidden
+        role="presentation"
+        className="pointer-events-none absolute -left-24 top-12 z-20 hidden h-[196px] w-[212px] max-w-none lg:block"
+        initial={reduceMotion ? undefined : { opacity: 0, x: -10 }}
+        animate={reduceMotion ? undefined : { opacity: 0.85, x: 0 }}
+        transition={{ duration: 0.9, delay: 1.35 }}
+      >
+        <Image src="/images/hero-arrow.svg" alt="" fill sizes="212px" unoptimized className="object-contain" />
+      </motion.div>
+
+      {/* White crumb and emphasis marks above the khatai. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-[24%] top-3 z-30 hidden text-white drop-shadow-[0_2px_4px_rgba(159,62,45,0.45)] md:block"
+      >
+        <svg viewBox="0 0 70 54" className="h-12 w-16" fill="none" stroke="currentColor" strokeLinecap="round">
+          <path d="M13 38 3 25M31 31 27 10M48 34 61 18" strokeWidth="4" />
+        </svg>
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[18%] top-8 z-30 hidden text-white drop-shadow-[0_2px_4px_rgba(159,62,45,0.45)] md:block"
+      >
+        <svg viewBox="0 0 70 54" className="h-11 w-14" fill="none" stroke="currentColor" strokeLinecap="round">
+          <path d="M13 38 3 25M31 31 27 10M48 34 61 18" strokeWidth="4" />
+        </svg>
+      </div>
+      <span aria-hidden className="absolute left-[17%] top-[18%] z-30 hidden h-2 w-2 rounded-full bg-white shadow-sm md:block" />
+      <span aria-hidden className="absolute right-[12%] top-[24%] z-30 hidden h-1.5 w-1.5 rounded-full bg-white shadow-sm md:block" />
+      <span aria-hidden className="absolute right-[8%] top-[31%] z-30 hidden h-1 w-1 rounded-full bg-white shadow-sm md:block" />
       {/* Saffron radial glow plate */}
       <div
         aria-hidden

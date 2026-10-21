@@ -112,7 +112,7 @@ export function Newsletter({ embedded = false }: { embedded?: boolean }) {
   }
 
   return (
-    <section id="newsletter" className="relative scroll-mt-24 py-24 md:py-32">
+    <section id="newsletter" className="relative scroll-mt-24 bg-khatai-newsletter py-24 md:py-32">
       <Container>{content}</Container>
     </section>
   );

@@ -9,14 +9,13 @@ import {
   useTransform,
   useReducedMotion,
 } from "motion/react";
-import { ArrowDown, Sparkles } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { HeroBiscuit } from "@/components/sections/hero-biscuit";
 import { useIntroDone } from "@/lib/use-intro-done";
 
-const heroHeadline = ["Homemade", "khatai,", "baked", "fresh", "in", "Lahore."];
+const heroHeadline = ["Khatai,", "done right."];
 
 const containerVariants = {
   hidden: {},
@@ -52,43 +51,36 @@ export function Hero() {
       className="relative isolate overflow-hidden pt-32 pb-24 md:pt-40 md:pb-36"
     >
       <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-mesh-warm opacity-90" />
-        <div className="absolute inset-0 bg-grain opacity-[0.35]" />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cream"
-        />
+        <div className="absolute inset-0 bg-warm-cream" />
       </div>
 
-      <Container className="relative">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+      <Container className="relative px-5 md:px-5 lg:px-5">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-4">
           <motion.div
             style={
               reduceMotion ? undefined : { y: copyY, opacity, willChange: "transform" }
             }
-            className="flex flex-col items-start gap-10"
+            className="mx-auto flex w-full max-w-[700px] flex-col items-center gap-8 text-center lg:-translate-x-16"
           >
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 0.6 }}
+              className="text-sm font-bold uppercase tracking-[0.36em] text-saffron-deep md:text-base"
             >
-              <Badge variant="gold">
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>Homemade · Hygienic kitchen · Lahore</span>
-              </Badge>
-            </motion.div>
+              The Lahore classic
+            </motion.p>
 
             <motion.h1
               variants={containerVariants}
               initial="hidden"
               animate={ready ? "show" : "hidden"}
-              className="font-serif text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-ink text-balance"
+              className="w-full pb-[0.12em] font-serif text-[clamp(3.2rem,6.2vw,6rem)] font-black italic leading-[0.94] tracking-[-0.045em] text-gold-deep"
             >
               {heroHeadline.map((word, idx) => (
                 <span
                   key={`${word}-${idx}`}
-                  className="mr-[0.25em] inline-block overflow-hidden align-bottom"
+                  className="block pb-[0.12em]"
                 >
                   <motion.span variants={wordVariants} className="inline-block">
                     {word}
@@ -101,11 +93,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={{ duration: 0.8, delay: ready ? 0.7 : 0 }}
-              className="max-w-xl text-lg text-ink/70 md:text-xl text-pretty"
+              className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/65 md:text-base"
             >
-              Small-batch khatai made by hand in a spotless kitchen with fresh
-              cardamom and honest ingredients. Baked fresh and delivered across
-              Lahore.
+              Crumbly. Buttery. Baked fresh.
             </motion.p>
 
             <motion.div
@@ -117,19 +107,6 @@ export function Hero() {
               <Button asChild variant="primary" size="lg">
                 <Link href="#collection">Order khatai</Link>
               </Button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={ready ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 1, delay: ready ? 1.1 : 0 }}
-              className="flex flex-wrap items-center gap-8 pt-8 text-sm text-ink/60"
-            >
-              <Stat value="100%" label="Homemade" />
-              <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
-              <Stat value="Daily" label="Fresh batches" />
-              <span className="hidden h-6 w-px bg-ink/15 sm:inline-block" />
-              <Stat value="4.9" label="Customer rating" />
             </motion.div>
           </motion.div>
 
@@ -166,14 +143,5 @@ export function Hero() {
         </motion.a>
       )}
     </section>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="flex flex-col">
-      <span className="font-serif text-2xl text-ink md:text-3xl">{value}</span>
-      <span className="text-xs uppercase tracking-[0.25em] text-ink/55">{label}</span>
-    </div>
   );
 }

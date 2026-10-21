@@ -19,7 +19,7 @@ export function Products({ products }: ProductsProps) {
   return (
     <section
       id="collection"
-      className="relative scroll-mt-24 py-24 md:py-32"
+      className="relative scroll-mt-24 bg-khatai-paper py-24 md:py-32"
       style={{ perspective: "1800px" }}
     >
       <Container>

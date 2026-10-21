@@ -5,10 +5,15 @@
 @source "../lib/**/*.{ts,tsx}";
 
 @theme {
+  --color-warm-cream: #eedfcd;
+  --color-footer-cream: #eedfcd;
   --color-cream: #fbf4e9;
   --color-cream-muted: #efe2d1;
+  --color-biscuit-surface: #e9cfaa;
   --color-gold-light: #f4e7bf;
-  --color-gold-muted: #ead6a4;
+  --color-gold-deep: #8b651e;
+  /* Shared warm-cream surface for the large gifting/contact card and footer. */
+  --color-gold-muted: #eedfcd;
   --color-saffron: #c5533d;
   --color-saffron-deep: #9f3e2d;
   --color-pistachio: #92b884;
@@ -43,7 +48,7 @@
   }
 
   body {
-    background: var(--color-cream);
+    background: var(--color-warm-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
@@ -73,13 +78,33 @@
     background-size: 3px 3px;
   }
 
+  .bg-khatai-paper {
+    background-color: var(--color-warm-cream);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(91, 58, 39, 0.035) 0.65px,
+      transparent 0.85px
+    );
+    background-size: 8px 8px;
+  }
+
+  .bg-khatai-newsletter {
+    background-color: var(--color-cream);
+    background-image:
+      radial-gradient(ellipse at 50% 48%, rgba(255, 247, 235, 0.78), transparent 58%),
+      radial-gradient(ellipse at 8% 100%, rgba(197, 83, 61, 0.055), transparent 38%);
+  }
+
+  .bg-khatai-footer {
+    background-color: var(--color-warm-cream);
+    background-image:
+      linear-gradient(180deg, rgba(238, 223, 205, 0) 0%, rgba(226, 197, 159, 0.44) 100%),
+      radial-gradient(circle at 1px 1px, rgba(91, 58, 39, 0.035) 0.65px, transparent 0.85px);
+    background-size: auto, 8px 8px;
+  }
+
   .bg-mesh-warm {
-    background:
-      radial-gradient(at 20% 20%, rgba(197, 83, 61, 0.28) 0, transparent 50%),
-      radial-gradient(at 80% 10%, rgba(146, 184, 132, 0.3) 0, transparent 50%),
-      radial-gradient(at 70% 80%, rgba(139, 67, 72, 0.3) 0, transparent 50%),
-      radial-gradient(at 20% 90%, rgba(197, 83, 61, 0.2) 0, transparent 50%),
-      var(--color-gold-light);
+    background: var(--color-warm-cream);
   }
 
   .text-balance {

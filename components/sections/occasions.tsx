@@ -6,10 +6,10 @@ import { whatsappUrl } from "@/lib/site";
 
 export function Occasions() {
   return (
-    <section id="occasions" className="relative scroll-mt-24 py-24 md:py-32">
+    <section id="occasions" className="relative scroll-mt-24 bg-khatai-paper py-24 md:py-32">
       <Container>
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gold-muted px-8 py-16 shadow-soft md:px-16 md:py-24">
-          <div className="absolute inset-0 bg-grain opacity-30" />
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-saffron-deep/15 bg-biscuit-surface px-8 py-16 shadow-soft md:px-16 md:py-24">
+          <div className="pointer-events-none absolute inset-0 bg-grain opacity-20" />
           <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
             <div className="flex flex-col items-start gap-10">
               <SectionHeading

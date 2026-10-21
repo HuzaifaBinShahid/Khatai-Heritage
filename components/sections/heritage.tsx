@@ -44,9 +44,22 @@ export function Heritage() {
     <section
       ref={ref}
       id="promise"
-      className="relative scroll-mt-24 overflow-hidden py-24 md:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-cream py-24 md:py-32"
     >
-      <Container>
+      {/* A quiet, bakery-paper wave makes the hero hand off to this lighter section. */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[5.5rem] w-full"
+        viewBox="0 0 1440 96"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 0H1440V42C1320 37 1275 23 1150 34C1015 46 935 78 810 70C680 62 650 26 525 25C390 24 325 61 208 58C110 55 61 35 0 42V0Z"
+          fill="#eedfcd"
+        />
+      </svg>
+
+      <Container className="relative z-10">
         <div className="grid gap-16 lg:grid-cols-[1.05fr_1fr] lg:items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-cream-muted shadow-soft">
             <motion.div

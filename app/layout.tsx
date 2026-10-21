@@ -9,7 +9,7 @@ import "./globals.css";
 export const metadata: Metadata = defaultMetadata;
 
 export const viewport: Viewport = {
-  themeColor: "#F5EFE7",
+  themeColor: "#EEDFCD",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(fontSans.variable, fontSerif.variable)}>
       <body
-        className="min-h-screen bg-cream text-ink antialiased"
+        className="min-h-screen bg-warm-cream text-ink antialiased"
         // Browser extensions (ColorZilla / cz-shortcut-listen, Grammarly, etc.)
         // mutate the <body> tag before React hydrates, causing a benign
         // hydration mismatch warning. Suppressing it on body only.
