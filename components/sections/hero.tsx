@@ -75,17 +75,16 @@ export function Hero() {
               variants={containerVariants}
               initial="hidden"
               animate={ready ? "show" : "hidden"}
-              className="w-full pb-[0.12em] font-serif text-[clamp(3.2rem,6.2vw,6rem)] font-black italic leading-[0.94] tracking-[-0.045em] text-gold-deep"
+              className="w-full whitespace-nowrap pb-[0.12em] font-serif text-[clamp(1.5rem,8vw,3.5rem)] font-semibold italic leading-none tracking-[-0.045em] text-gold-deep lg:text-[clamp(2.75rem,4.5vw,4rem)]"
             >
               {heroHeadline.map((word, idx) => (
-                <span
+                <motion.span
                   key={`${word}-${idx}`}
-                  className="block pb-[0.12em]"
+                  variants={wordVariants}
+                  className={idx < heroHeadline.length - 1 ? "mr-[0.2em] inline-block" : "inline-block"}
                 >
-                  <motion.span variants={wordVariants} className="inline-block">
-                    {word}
-                  </motion.span>
-                </span>
+                  {word}
+                </motion.span>
               ))}
             </motion.h1>
 
